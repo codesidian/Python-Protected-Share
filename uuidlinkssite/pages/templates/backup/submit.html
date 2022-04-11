@@ -1,0 +1,24 @@
+{% extends 'basic_template.html' %} 
+{% block 'body' %}
+
+
+<form method="post" id="submForm">
+  {% csrf_token %}
+    <h3>Submit</h3>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Page Title:</label>
+      {{form.title}}
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Page Template (Markdown supported):</label>
+      {{form.template}}
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Page Password:</label>
+      {{form.password}}
+    </div>
+
+    <a  href="javascript:{}" onclick="document.getElementById('submForm').submit();" > Submit></a>
+</form>
+{% endblock %}

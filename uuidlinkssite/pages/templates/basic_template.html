@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet"
+          href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/staticfiles/js.js"></script>
+    <link href="/staticfiles/css.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>default</title>
+    <style>
+    body{
+        background-color: black;
+        color:limegreen;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span ><a href="/">Home</a></span>
+        <span >></span>
+        <span ><a href="/all">Recent</a></span>
+        <span >></span>
+        <span ><a href="/{{ page_uuid }}">{{ page_uuid }}</a></span>
+        {% block 'body' %}{% endblock %}
+    </div>
+    <div class="footer_container">
+        <a class="footer" href="https://github.com/codesidian">>codesidian &#129412;</a>
+    </div>
+</body>

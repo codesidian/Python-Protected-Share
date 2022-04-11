@@ -1,0 +1,15 @@
+{% extends 'basic_template.html' %}
+{% block 'body' %}
+    <div class="row ">
+        <h2 class="col-xs mgn-top-1">
+            Most Recent <span class="cursor"></span>
+        </h2>
+    </div>
+    <div class="row ">
+        {% for page in pages %}
+            <div class="col-xs">
+                <a href="/{{ page.uuid }}">> {{ page.uuid }} | {{ page.title }}</a>
+            </div>
+        {% endfor % %}
+    </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+body {
+    color: rgb(0, 255, 0);
+}
+
+.form-label {
+    color: rgb(0, 255, 0) !important;
+}
+
+a {
+    position: relative;
+    font-family: monospace;
+    background-color: black;
+    text-decoration: none;
+    color: rgb(0, 255, 0);
+    font-size: 1.5em;
+}
+
+a:hover {
+
+    color: rgb(1, 122, 1);
+    text-decoration: none;
+    background-color: black;
+
+}
+
+.mgn-top-1 {
+    margin-top: 1em;
+}
+
+.mgn-top-3 {
+    margin-top: 3em;
+}
+
+.cursor {
+    opacity: 1;
+    margin-bottom: -2px;
+    margin-left: 0.5em;
+    height: 15px;
+    border-left: 7px solid rgb(0, 255, 55);
+    animation: blinker 0.9s steps(2, start) infinite;
+}
+
+@keyframes blinker {
+    to {
+        visibility: hidden;
+    }
+}
+
+.footer_container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    text-align: center;
+}
+
+.footer {
+    background-color: transparent !important;
+    color: white;
+    text-align: center;
+    margin: auto;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.idt-2 {
+    text-indent: 1em;
+}
+
+.idt-m2 {
+    text-indent: -1em;
+}

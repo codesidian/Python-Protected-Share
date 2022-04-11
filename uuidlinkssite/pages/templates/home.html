@@ -1,0 +1,34 @@
+{% extends 'basic_template.html' %}
+{% block 'body' %}
+    <div class="row ">
+        <h2 class="col-xs mgn-top-1">
+            Protected Share <span class="cursor"></span>
+        </h2>
+    </div>
+    <div class="row ">
+        <div class="col-xs">> Markdown rendering supported</div>
+        <div class="col-xs">> All pages are password protected</div>
+        <div class="col-xs">> Pages are fully encrypted - Even I cannot access your data without your password</div>
+        <div class="col-xs">> Data is wiped every 24 hours</div>
+        <h4 class="col-xs">> Your titles are not private</h4>
+    </div>
+    <div class="row">
+        <h2 class="col-xs mgn-top-3">uuidlink.py -h</h2>
+    </div>
+    <div class="row mgn-top-1">
+        <div class="col-xs">Usage:</div>
+        <div class=" idt-2">
+            <div class="col-xs">-c Contribute a page to the site, with a password</div>
+            <div class="col-xs">-s Share your uuid link</div>
+            <div class="col-xs">-p On viewing, input password to decrypt</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs mgn-top-3">
+            <form action="/submit/" id="contrForm">
+                <a href="javascript:{}"
+                   onclick="document.getElementById('contrForm').submit();">Contribute></a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'basic_template.html' %}
+{% block 'body' %}
+    <div class="row ">
+        <h2 class="col-xs mgn-top-1">
+            Submit <span class="cursor">
+        </h2>
+    </div>
+    <form method="post" id="submForm">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-xs">
+                >
+                <label class="form-label">Page Title:</label>
+                {{ form.title }}
+            </div>
+            <div class="col-xs">
+                >
+                <label class="form-label">Page Template (Markdown supported):</label>
+                {{ form.template }}
+            </div>
+            <div class="col-xs">
+                >
+                <label class="form-label">Page Password:</label>
+                {{ form.password }}
+            </div>
+        </div>
+    </form>
+    <a class="mgn-top-3"
+       href="javascript:{}"
+       onclick="document.getElementById('submForm').submit();">Create></a>
+{% endblock %}

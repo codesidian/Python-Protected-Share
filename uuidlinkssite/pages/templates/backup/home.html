@@ -1,0 +1,23 @@
+{% extends 'basic_template.html' %} 
+{% block 'body' %}
+<div class="row">
+            <h2 class="col-md">Protected Share</h2>
+        </div>
+          <div class="row">
+            <div class="col-xs">
+                > Markdown rendering supported
+            </div>
+            <div class="col-xs">
+                > All pages are password protected
+            </div>
+            <div class="col-xs">
+                > Data is wiped every 24 hours  <span class="cursor"></span>
+            </div>
+          </div>
+          
+<form action="/submit/" id="contrForm">
+    <div class="d-grid gap-2">
+    <a  href="javascript:{}" onclick="document.getElementById('contrForm').submit();" > Contribute></a>
+</div>
+</form>
+{% endblock %}
