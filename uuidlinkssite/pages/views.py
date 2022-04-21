@@ -31,17 +31,6 @@ def submit_view(request):
         password = page_form.cleaned_data["password"].strip()
         title = page_form.cleaned_data["title"]
         template = page_form.cleaned_data["template"]
-        template_block = f"""
-        {{% extends 'basic_template.html' %}} 
-        {{% block 'body' %}}
-        <div class="row">
-            <h2 class="col-xs mgn-top-1">
-                {title} <span class="cursor"></span>
-            </h2>
-        </div>
-        {markdown.markdown(template)}
-        {{% endblock %}}
-        """
 
         page_obj = Page(
             title=title,
@@ -50,7 +39,7 @@ def submit_view(request):
             hash=None,
         )
         page_id = page_obj.uuid
-        page_obj.save(password=password, template_block=template_block)
+        page_obj.save(password=password, template_block=template)
         request.session[str(page_id)] = get_derived_key(
             page_id, password
         ).decode("utf8")
@@ -82,9 +71,13 @@ def __render_page(request, page_id):
     page_obj = Page.objects.get(uuid=page_id)
     key = request.session[str(page_id)]
     if verify_key(page_id, key):
-        t = Template(decrypt_page(page_id, key))
-        context = Context({"page_uuid": page_id, "title": page_obj.title})
-        return HttpResponse(t.render(context))
+        t = decrypt_page(page_id, key)
+        context = {
+            "page_uuid": page_id,
+            "template": markdown.markdown(t),
+            "title": page_obj.title,
+        }
+        return render(request, "template.html", context)
     else:
         request.session[str(page_id)] = None
         return redirect("page_view", page_id=page_id)

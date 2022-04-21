@@ -12,7 +12,7 @@ def verify_key(page_id, key):
     page_obj = Page.objects.get(uuid=page_id)
     return page_obj.hash == gen_hash(bytes(key, "utf-8"))
 
-
+# TODO:MOVE TO MODEL
 def decrypt_page(page_id, key):
     page_obj = Page.objects.get(uuid=page_id)
     cipher_suite = Fernet(key)
@@ -20,7 +20,7 @@ def decrypt_page(page_id, key):
         "utf-8"
     )
 
-
+# TODO;: MOVE TO MODEL
 def get_derived_key(page_id, pwd):
     page_obj = Page.objects.get(uuid=page_id)
     password = bytes(pwd, "utf-8")
