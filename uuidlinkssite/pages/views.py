@@ -1,26 +1,18 @@
 from django.shortcuts import redirect, render
-from django.template import Context, Template
 from pages.models import Page
-from django.http import HttpResponse
 import markdown
 from .forms import PageForm, CreatePage
-
 from common.crypt import (
     decrypt_page,
     get_derived_key,
     verify_key,
-    gen_hash,
 )
-import os
+
 
 # Create your views here.
 def default_view(request):
     context = {}
     return render(request, "home.html", context)
-
-
-def password_view(request, page_id):
-    pass
 
 
 def submit_view(request):
@@ -81,6 +73,13 @@ def __render_page(request, page_id):
     else:
         request.session[str(page_id)] = None
         return redirect("page_view", page_id=page_id)
+
+
+def delete_page(request, page_id):
+    key = request.session[str(page_id)]
+    if verify_key(page_id, key):
+        page_to_delete = Page.objects.get(uuid=page_id)
+        page_to_delete.delete()
 
 
 def recent_view(request):
